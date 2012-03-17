@@ -3,7 +3,9 @@
   %head
     %title BillerBot
     = csrf_meta_tags
-    = stylesheet_link_tag "application","jquery.autocomplete","jquery-ui-timepicker-addon","formtastic", "formtastic_changes"   
+    = stylesheet_link_tag "application","jquery.autocomplete","jquery-ui-timepicker-addon","formtastic", "formtastic_changes"
+    = javascript_include_tag "application", "jquery-ui", "jquery.autocomplete","jquery-ui-timepicker-addon"             
+    = javascript_include_tag :cocoon  
   %body
     .topbar.navbar.navbar-fixed-top
       .navbar-inner
@@ -32,5 +34,3 @@
           %p= message
       #content
         = yield
-    = javascript_include_tag "application", "jquery-ui", "jquery.autocomplete","jquery-ui-timepicker-addon"             
-    = javascript_include_tag :cocoon
