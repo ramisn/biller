@@ -59,9 +59,10 @@ $(function() {
 	$(".lazy_model").click(function(){
 		$("#"+ $(this).attr("def_ref")).dialog({
       modal: true,
-      width: wWidth*0.6,
+      width: wWidth*0.4,
       autoResize:true
 			});
+		alert("#"+ $(this).attr("def_ref"));	
 	});
 
 	$(".close_notice").click(function(){
