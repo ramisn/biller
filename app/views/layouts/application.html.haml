@@ -5,6 +5,8 @@
     = csrf_meta_tags
     = stylesheet_link_tag "application","jquery.autocomplete","jquery-ui-timepicker-addon","formtastic", "formtastic_changes"
     = javascript_include_tag "application", "jquery-ui"
+    = javascript_include_tag :defaults
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "jquery.rails.js"
   %body
     .topbar.navbar.navbar-fixed-top
       .navbar-inner
@@ -33,5 +35,5 @@
           %p= message
       #content
         = yield
-    = javascript_include_tag "application", "jquery.autocomplete","jquery-ui-timepicker-addon", "jquery"              
+    = javascript_include_tag "jquery.autocomplete","jquery-ui-timepicker-addon"             
     = javascript_include_tag :cocoon
