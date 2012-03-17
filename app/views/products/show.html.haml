@@ -1,0 +1,9 @@
+= link_to "Edit Product", edit_product_path(@product), :class => [:btn, :primary, "float-right"]
+%h1= @product.name.capitalize
+%dl.details
+  %dt Key
+  %dd= @product.key
+  %dt Price
+  %dd= number_to_currency @product.unit_price
+  %dt Description
+  %dd= @product.description

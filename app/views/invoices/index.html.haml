@@ -1,0 +1,36 @@
+= @id
+= link_to "Create Invoice", new_invoice_path(), :class=>"btn primary float-right"
+%h1 Invoices
+%form.search{:action => invoices_path, :method => "get"}
+  %input{:name => "q", :type => "serach", :value => params[:q]}/
+  %input.btn{:type => "submit"}/
+  %table.zebra-striped
+    %thead
+      %tr
+        %th.header.blue Number
+        %th.blue.header Organisation
+        %th.blue.header Account Name
+        %th.blue.header Status
+        / <th class="blue header ">End User</th>
+        %th.blue.header Created Date
+
+    %tbody
+      - @invoice.each do|invoice|
+        - if invoice.account!=nil
+          %tr
+            %td
+              = link_to "INV#{@count+=1}", invoice_path(:id =>invoice.id) rescue nil
+            %td
+              = invoice.organization.name
+            %td
+              = link_to invoice.account.display_name, account_path(invoice.account.id)
+            %td
+              = invoice.statuses
+            %td
+              = invoice.created_at
+            %td
+              %font{:size => "3"}= link_to "Invoice Details",:action=>'show',:id=>invoice.id
+
+
+= paginate @invoice
+

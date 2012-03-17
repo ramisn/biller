@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require formtastic
+ *= require formtastic-bootstrap
+ *= require_tree . 
+*/
+.left{
+    float: left;
+
+}
+
+.button a{
+   color:#ffffff;
+   background-color: #006DCC;
+   background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);
+   background-repeat: repeat-x;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+   padding: 8px;
+
+}
+.button a:hover{
+   color:#ffffff;
+   background-color: #006DCC;
+   background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);
+   background-repeat: repeat-x;
+   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+
+}
+#account_id {
+    margin: 0 0 20px 0  
+}
+#invoice_account_id {
+    margin: 0 0 20px 0
+}
+
+.left_a{
+    float: right;
+}
+#addlineitem,#delete{
+    color:#ffffff;
+    background-color: #006DCC;
+    background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+#ui-datepicker-div {
+    display:none;
+}
+.secondary-nav {
+float:right !important;
+}
+/*#delete{*/
+    /*color:#ffffff;*/
+    /*background-color: #006DCC;*/
+    /*background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);*/
+    /*background-repeat: repeat-x;*/
+    /*border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);}}*/
+    
+.formtastic textarea {
+  width: 200px;
+} 
+
+.formtastic .stringish input[size] {  
+    max-width: 30% !important;
+    width: auto;
+}
+ td, th {
+  padding-right:100px;
+  margin: 10px; 
+}
+
+

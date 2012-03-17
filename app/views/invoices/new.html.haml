@@ -1,0 +1,43 @@
+= semantic_form_for @invoice do |f|
+  = f.inputs do
+    = f.label "Account"
+    #account_select
+      = render :partial => "account_select", :locals => { :f => f }
+    = f.input :created_at ,{:as=>:string, :class =>"created_at" }
+    = f.input :statuses ,:label=>"Status",:collection => ["Received", "Pending", "Due","Processing","Returned","Approved" ]
+    = f.input :tax,:label=>'Tax in %',:hint=>" for example - 4.5"
+  %h5{:align => "right"}
+    = f.commit_button  :button_html => { :class=>"primary" ,:value=>"Save Invoice"}
+    %br/
+  / table just for layout sake
+  / <table >
+  / <tr>
+  / <td >
+  / Form
+  / <form name="invoice" id="invoice" method="post" action="create">
+  / Main table
+
+
+  %table#TableMain
+    %th Product Name
+    %th Quantity
+    %th Unit Price
+    %th Total
+    %th
+    %tr#row1  
+    %br/
+    %br/
+  %div{:align => "right"}
+    TOTAL:
+    %input#gtotal{:name => "gtotal", :readonly => "true", :style => "width:100px", :type => "text", :value => "0"}/
+    %td{:valign => "top", :width => "20%"}
+  / Add more button
+  \  
+  %input#addlineitem{:onClick => "addRow('TableMain','row1')", :type => "button", :value => "Add Line Item"}/
+  %br/
+  %br/
+  Add Product Key
+  %input#keywords1{:name => "addkey", :type => "text"}/
+
+#add_account.hidden
+  = render :partial=> "create_account"

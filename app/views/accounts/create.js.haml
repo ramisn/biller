@@ -1,0 +1,10 @@
+- if @success
+  :plain
+    $('#account_select').html("#{escape_javascript(render 'invoices/account_select')}");
+    $('#add_account').dialog('close');
+- else
+  :plain
+    $('#add_account').html("#{escape_javascript(render 'invoices/create_account')}");
+
+		
+	

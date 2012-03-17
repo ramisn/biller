@@ -1,0 +1,24 @@
+%table.zebra-striped
+  %thead
+    %tr
+      %th.header #
+      %th.header.yellow Name
+      %th.blue.header Unit Price
+      %th.blue.header Key
+      %th.blue.header
+        Description
+        %th
+  %tbody#t_body_products
+    - products.each_with_index do |product, i|
+      <tr id="product_table_tr_#{product.id}"'>
+      %td.serialNo= i+1
+      %td
+        %span{:class => "editable-#{"name-#{product.id}"}"}= product.name
+      %td
+        $
+        %span{:class => "editable-#{"unit_price-#{product.id}"}"}= product.unit_price
+      %td
+        %span{:class => "editable-#{"key-#{product.id}"}"}= product.key
+      %td
+        %span{:class => "editable-#{"description-#{product.id}"}"}= product.description
+      %td= link_to "Delete", product,:confirm => "You sure?", :method => :delete,:remote => true

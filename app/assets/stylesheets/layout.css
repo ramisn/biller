@@ -1,0 +1,7 @@
+.float-right {
+  float: right;
+}
+
+.nav.secondary-nav p a {
+  display: inline;
+}

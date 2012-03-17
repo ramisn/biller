@@ -1,0 +1,11 @@
+%tr.form_table
+  = form_for Product.new do |f|
+    %td.serialNo
+    %td
+      = f.text_field :name
+    %td
+      = f.text_field :unit_price
+    %td
+      = f.text_field :key
+    %td
+      = f.text_field :description

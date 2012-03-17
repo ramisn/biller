@@ -1,0 +1,19 @@
+= link_to "Add Account", new_account_path(), :class=>"btn primary float-right"
+%br/
+%br/
+%br/
+%br/
+%h1 Accounts
+%form.search{:action => accounts_path, :method => "get"}
+%input{:name => "q", :type => "serach", :value => params[:q]}/
+%input.btn{:type => "submit"}/
+= raw page_entries_info @accounts
+%table.zebra-striped
+  %thead
+    %tr
+      %th.header.blue Vendor Name
+      %th.blue.header Email
+      %th.blue.header Phone
+  %tbody
+    = render @accounts
+  = paginate @accounts

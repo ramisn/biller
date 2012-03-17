@@ -1,0 +1,11 @@
+= link_to "Edit Contact", edit_account_contact_path(@account_contact), :class => [:btn, :primary, "float-right"]
+%br/
+%br/
+%br/
+%h1= @account_contact.first_name
+%ul
+  %li= @account_contact.last_name
+  %li= link_to @account_contact.email, "mailto:#{@account_contact.email}"
+  %li= @account_contact.phone
+= @as
+= params

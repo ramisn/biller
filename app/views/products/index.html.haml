@@ -1,0 +1,14 @@
+= link_to "Add product", new_product_path, :class => "btn primary float-right"
+%h1 Products
+%form.search{:action => products_path, :method => "get"}
+  %input{:name => "q", :type => "serach", :value => params[:q]}/
+  %input.btn{:type => "submit"}/
+= raw page_entries_info @products
+%table.zebra-striped
+  %thead
+    %tr
+      %th.header.blue= sortable_header "Name", :name
+      %th.blue.header= sortable_header "Unit Price", :unit_price
+  %tbody
+    = render @products
+= paginate @products

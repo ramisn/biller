@@ -1,0 +1,52 @@
+.print
+	%h1
+		Invoices
+	%h4{:align=> "right"} #{link_to "Edit", edit_invoice_path(@invoice)}
+	%b
+		Invoice ID 
+		= @invoice.id
+		%br
+		Account Name
+		= link_to @invoice.account.display_name, account_path(@invoice.account.id)
+		%br
+		Created At   
+		= (@invoice.created_at).strftime("%d/%m/%Y - %H:%M")
+		%br
+		Updated At
+		= (@invoice.updated_at).strftime("%d/%m/%Y - %H:%M")
+		%br
+		= @account.email
+	%table.zebra-striped
+		%thead
+			%tr
+				%th.header.blue Product Name
+				%th.blue.header Quantity
+				%th.blue.header Unit Price
+				%th.blue.header Amount
+
+		%tbody
+			- @sum=0
+			- @lineitems.each do |i|
+				%tr
+					%td
+						= i.name
+					%td
+						= @a=i.quantity
+					%td
+						= @b=i.unit_price
+					%td
+						- @tax=@invoice.tax.to_f
+						= @total=@a.to_f*@b.to_f
+						
+			%tr
+				%th.blue.header Total Amount (with #{@invoice.tax}% tax)
+				%th
+				%th
+				%th
+					= @invoice.total_amount.to_f * (1 + @invoice.tax.to_f / 100)
+	- if !@print
+		.button
+			= link_to "Print Invoice", invoice_path(:print => true)
+		- else
+		=javascript_tag "window.print()"
+		=javascript_tag "history.go(-1)"
