@@ -22,7 +22,7 @@ gem "rake"
 gem "activemerchant"
 gem 'less-rails-bootstrap'
 gem 'tabulous'
-
+gem 'haml-rails', :group => :development
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

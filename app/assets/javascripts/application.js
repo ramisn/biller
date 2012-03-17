@@ -14,21 +14,26 @@
 $(function() {
     $('#product_context_start_time').datetimepicker({
     	duration: '',
-        showTime: true,
-        constrainInput: false,
-         dateFormat: "dd-mm-yy"
+      showTime: true,
+      constrainInput: false,
+      dateFormat: "dd-mm-yy"
      });
-});
-
-$(function() {
+     
     $('#product_context_end_time').datetimepicker({
     	duration: '',
-        showTime: true,
-       constrainInput: false,
-         dateFormat: "dd-mm-yy"
+      showTime: true,
+      constrainInput: false,
+      dateFormat: "dd-mm-yy"
      });
-});
-$(function() {
+     
+    $('#holiday_holiday_date').datetimepicker({
+    	duration: '',
+      showTime: true,
+      constrainInput: false,
+      dateFormat: "dd-mm-yy"
+     });
+     
+     
     $("select").change(function() {
         var selectValue = $("#product_context_context_type").val();
 

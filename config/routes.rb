@@ -1,4 +1,8 @@
 BillerBot::Application.routes.draw do
+  
+
+  resources :holidays
+
   match '/payments/payment', :to => 'payments#payment', :as => 'paymentspayment', :via => [:get]
 
   match '/payments/relay_response', :to => 'payments#relay_response', :as => 'payments_relay_response', :via => [:post]

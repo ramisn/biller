@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  holiday_for: MyString
+  holiday_date: 2012-03-17 20:44:20
+  users: 
+
+two:
+  holiday_for: MyString
+  holiday_date: 2012-03-17 20:44:20
+  users: 
