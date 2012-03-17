@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require twitter/bootstrap
 //= require_tree .
 
@@ -100,51 +101,43 @@ $('#total'+no).val(quantity*unitprice);
 
 
  }
-
-
-
-
-
-
- var row_no=0;
+var row_no=0;
 var row_len=0;
- function addRow(tbl,row){
+function addRow(tbl,row){
+  //row count
+   row_no++;
+   row_len++;
 
-//row count
- row_no++;
- row_len++;
+   var tick = String(row_no);
 
- var tick = String(row_no);
+   if (row_no>=0){
 
- if (row_no>=0){
+  //Declaring text boxes
 
-//Declaring text boxes
+   var textbox ='<input type="text" style="width:100px" name="pn[]" id=pn'+tick+'>';
+   var textbox2 = '<input type="text" style="width:100px" name="qty[]" onblur="calculate('+tick+');"  value="1" id=qty'+tick+'>';
+   var textbox3 = '<input type="text" style="width:100px"  name="up[]" onblur="calculate('+tick+')"   value="0.0" id=up'+tick+'>';
+   var textbox4 = '<input type="text" style="width:100px" readonly ="true"  name="total[]" value="0.0" id=total'+tick+'>';
 
- var textbox ='<input type="text" style="width:100px" name="pn[]" id=pn'+tick+'>';
- var textbox2 = '<input type="text" style="width:100px" name="qty[]" onblur="calculate('+tick+');"  value="1" id=qty'+tick+'>';
- var textbox3 = '<input type="text" style="width:100px"  name="up[]" onblur="calculate('+tick+')"   value="0.0" id=up'+tick+'>';
- var textbox4 = '<input type="text" style="width:100px" readonly ="true"  name="total[]" value="0.0" id=total'+tick+'>';
+  //delete button
+   var stop = '<input type="button" id="delete"value="Delete"  onclick="deleteRow(this);" >';
 
-//delete button
- var stop = '<input type="button" id="delete"value="Delete"  onclick="deleteRow(this);" >';
+  //Inserting textboxes into table cells
 
-//Inserting textboxes into table cells
-
- var tbl = document.getElementById(tbl);
- var rowIndex = document.getElementById(row).value;
- var newRow = tbl.insertRow(row_no);
- var newCell = newRow.insertCell(0);
- newCell.innerHTML = textbox;
- var newCell = newRow.insertCell(1);
- newCell.innerHTML = textbox2;
- var newCell = newRow.insertCell(2);
- newCell.innerHTML = textbox3;
- var newCell = newRow.insertCell(3);
- newCell.innerHTML = textbox4;
- var newCell = newRow.insertCell(4);
- newCell.innerHTML = stop;
- }
-
+   var tbl = document.getElementById(tbl);
+   var rowIndex = document.getElementById(row).value;
+   var newRow = tbl.insertRow(row_no);
+   var newCell = newRow.insertCell(0);
+   newCell.innerHTML = textbox;
+   var newCell = newRow.insertCell(1);
+   newCell.innerHTML = textbox2;
+   var newCell = newRow.insertCell(2);
+   newCell.innerHTML = textbox3;
+   var newCell = newRow.insertCell(3);
+   newCell.innerHTML = textbox4;
+   var newCell = newRow.insertCell(4);
+   newCell.innerHTML = stop;
+   }
  }
 //Delete Function
  function deleteRow(r)
