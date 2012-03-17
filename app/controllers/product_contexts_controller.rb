@@ -14,9 +14,7 @@ class ProductContextsController < ApplicationController
     add_breadcrumb "Products", :products_path
     add_breadcrumb   @product.name, :product_product_contexts_path
     add_breadcrumb "#{@product.name} contexts ", :product_product_contexts_path
-
-    @all=@product.product_contexts
-    @n= @all.sort() #TDO (sorting is not working based on context_priority)
+    @product_contexts=@product.product_contexts.order("context_priority")
   end
   def show
       add_breadcrumb "Products", :products_path

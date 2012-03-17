@@ -94,13 +94,7 @@ $('#total'+no).val(quantity*unitprice);
               if($('#total'+i).val())
               sum=parseFloat(sum) + parseFloat($('#total'+i).val());
           }
-     if (parseInt($("#sum").val())){
-          $('#gtotal').val(sum +parseInt($("#sum").val()));
-     }else {
-        $('#gtotal').val(sum);
-     }
-
-
+      $('#gtotal').val(parseFloat(sum));
  }
 var row_no=0;
 var row_len=0;
@@ -115,10 +109,11 @@ function addRow(tbl,row){
 
   //Declaring text boxes
 
-   var textbox ='<input type="text" style="width:100px" name="pn[]" id=pn'+tick+'>';
-   var textbox2 = '<input type="text" style="width:100px" name="qty[]" onblur="calculate('+tick+');"  value="1" id=qty'+tick+'>';
-   var textbox3 = '<input type="text" style="width:100px"  name="up[]" onblur="calculate('+tick+')"   value="0.0" id=up'+tick+'>';
-   var textbox4 = '<input type="text" style="width:100px" readonly ="true"  name="total[]" value="0.0" id=total'+tick+'>';
+  
+ var textbox ='<input type="text" style="width:100px" class="autocomplete_field" def_ref='+row_no+'  name="pn[]" id=pn'+tick+'>';
+ var textbox2 = '<input type="text" style="width:100px" name="qty[]" onblur="calculate('+tick+');"  value="1" id=qty'+tick+'>';
+ var textbox3 = '<input type="text" style="width:100px"  name="up[]" onblur="calculate('+tick+')"   value="0.0" id=up'+tick+'>';
+ var textbox4 = '<input type="text" style="width:100px" readonly ="true"  name="total[]" value="0.0" id=total'+tick+'>';
 
   //delete button
    var stop = '<input type="button" id="delete"value="Delete"  onclick="deleteRow(this);" >';
@@ -237,6 +232,35 @@ $(document).ready(function() {
 
 
                 });
+                
+ 
+    //automcomplete for the product name field
+    $('.autocomplete_field').live('focus', function() {
 
+
+
+        $("#pn"+$(this).attr('def_ref')).autocomplete('find', {
+                    minChars: 1,
+                    max: 20,
+                    mustMatch: false,
+                    matchContains: false,
+                    scrollHeight: 300,
+                    //multiple: true,
+                    //multipleSeparator: ", ",
+                    width: 200
+                });
+
+
+        $("#pn"+$(this).attr('def_ref')).live('result', function(event, data, formatted)
+                {
+                  $("#pn"+$(this).attr('def_ref')).val(data[0]);
+                  $("#up"+$(this).attr('def_ref')).val(data[1]);
+                  $("#qty"+$(this).attr('def_ref')).val(1);
+                   calculate($(this).attr('def_ref'));
+
+                });
+
+	});
 });
+
 

@@ -36,7 +36,7 @@
       - @line_items.each do |item|
         %tr
           %td
-            %input{:name=>"pn[]",:id=>"pn#{@i}",:style=>"width:100px",:type=>"text",:value=>"#{item.name}"}/
+            %input{:name=>"pn[]",:id=>"pn#{@i}",:style=>"width:100px",:class=>"autocomplete_field",:def_ref=>"#{@i}",:onblur=>"calculate(#{@i})", :type=>"text",:value=>"#{item.name}"}/
           %td
             %input{:name=>"qty[]",:id=>"qty#{@i}",:style=>"width:100px",:type=>"text",:value=>"#{@a=item.quantity}",:onblur=>"calculate(#{@i})"}/
           %td
@@ -60,7 +60,7 @@
   Add Product Key
   %input#keywords1{:name => "addkey", :type => "text"}/
   = hidden_field_tag "sum",@sum,  {:id => "sum"}
-  = hidden_field_tag "number_of_row", @line_items.size
+  = hidden_field_tag "number_of_row", @line_items.size+1
 :javascript
   update_row_number(parseInt($("#number_of_row").val()));
 

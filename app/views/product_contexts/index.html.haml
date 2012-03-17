@@ -3,7 +3,7 @@
   %table.zebra-striped
     %thead
       / displaying all the contexts of  product
-      - if @all.empty?
+      - if @product_contexts.empty?
         - flash[:notice]="No Context Is Available For the #{@product.name}"
       - else
         %tr
@@ -14,7 +14,7 @@
           %th Context Priority
           %th Edit
           %th Delete
-        - @all.each do |f|
+        - @product_contexts.each do |f|
           %tr
             %td
               = link_to f.context_type,:controller => "product_contexts",:action => "show",:id=>f.id
