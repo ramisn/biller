@@ -1,0 +1,24 @@
+-if @product_context.context_type=="Time"
+  - @disply="block"
+-else
+  - @disply="none"
+ 
+= semantic_form_for  [@product,@product_context ] do |f|
+  = f.inputs do
+    .extra_field_input
+      = f.input :context_type,:as=> :select,:label => "Context Type",:include_blank => false,:collection => [["Holiday", "Holiday"], ["Weekend","Weekend"], ["Time","Time"]]
+      .aligntop.bold.extra{:style => "display:#{@disply}"}
+        Start Time: 
+        =f.text_field :start_time, {:readonly=>"true"}
+      %br/
+      .aligntop.bold.extra{:style => "display:#{@disply}"}
+        End Time: 
+        =f.text_field :end_time, {:readonly=>"true"}
+    %br/
+    = f.input :unit_price
+    = f.input :context_priority
+  = f.buttons do
+    = link_to "Cancel", :back, :class => "float-right"
+    = f.commit_button  :button_html => {:class=>"primary",:onclick=>"return test();"}
+    
+

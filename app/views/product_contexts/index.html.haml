@@ -1,0 +1,43 @@
+%html
+  %h1 Product Contexts
+  %table.zebra-striped
+    %thead
+      / displaying all the contexts of  product
+      - if @all.empty?
+        - flash[:notice]="No Context Is Available For the #{@product.name}"
+      - else
+        %tr
+          %th Context Type
+          %th Unit Price
+          %th Start Time
+          %th End Time
+          %th Context Priority
+          %th Edit
+          %th Delete
+        - @all.each do |f|
+          %tr
+            %td
+              = link_to f.context_type,:controller => "product_contexts",:action => "show",:id=>f.id
+            %td
+              $
+              =f.unit_price
+            %td
+              - if f.start_time!=nil
+                = f.start_time
+              - else
+                \----
+            %td
+              - if f.end_time!=nil
+                = f.end_time
+              - else
+                \----
+            %td
+              = f.context_priority
+            %br/
+            %td
+              = link_to "Edit", edit_product_product_context_path(@product.id,f.id),:class => "btn primary float-left"
+            %td
+              = link_to "Destroy context",product_product_context_path(@product.id,f.id), :method => :delete, :class => "btn primary float-left",:confirm => 'Are you sure want to DELETE your Context???',:method=> :delete
+          %br/
+    %tbody
+      = link_to "Add context",new_product_product_context_path(@product),:class => "btn primary float-left"

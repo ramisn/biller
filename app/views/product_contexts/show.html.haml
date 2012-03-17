@@ -1,0 +1,33 @@
+%table{:border => "2"}
+  %tr
+    %th Product Name
+    %th Context Type
+    %th Unit Price
+    %th Starting Time
+    %th Ending Time
+    %th Context Priority
+    %th         Edit
+    %th              Destroy
+  %tr
+    %td
+      = @products_contexts.product.name
+    %td
+      = @products_contexts.context_type
+    %td
+      = @products_contexts.unit_price
+    %td
+      - if @products_contexts.start_time!=nil
+        = @products_contexts.start_time
+      - else
+        \--
+    %td
+      - if @products_contexts.end_time!=nil
+        = @products_contexts.end_time
+      - else
+        \--
+    %td
+      = @products_contexts.context_priority
+    %td
+      = link_to "Edit", edit_product_product_context_path(@products_contexts),:class => "btn primary float-right"
+    %td
+      = link_to "Destroy context",product_product_context_path(@products_contexts.product_id,@products_contexts), :method => :delete,:class => "btn primary float-right"

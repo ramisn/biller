@@ -1,4 +1,9 @@
 %tr
-  %td= link_to product.name , product
+  %td
+    = link_to product.name , product
   %td
     $#{product.unit_price}
+  %td
+    = link_to "Add context",new_product_product_context_path(product),:class => "btn primary float-right"
+  %td
+    = link_to "Show contexts",product_product_contexts_path(product),:class => "btn primary float-right"

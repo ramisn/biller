@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -99,6 +100,10 @@ ActiveRecord::Schema.define(:version => 20120314142603) do
     t.text     "parameters"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "context_priority"
+    t.string   "context_type"
   end
 
   create_table "products", :force => true do |t|
@@ -107,8 +112,8 @@ ActiveRecord::Schema.define(:version => 20120314142603) do
     t.float    "unit_price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "key",                            :default => "", :null => false
-    t.text     "description",     :limit => 255
+    t.string   "key",             :default => "", :null => false
+    t.string   "description"
     t.integer  "user_id"
   end
 

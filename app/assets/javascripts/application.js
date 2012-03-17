@@ -9,6 +9,44 @@
 //= require twitter/bootstrap
 //= require_tree .
 
+//script for the product context
+$(function() {
+    $('#product_context_start_time').datetimepicker({
+    	duration: '',
+        showTime: true,
+        constrainInput: false,
+         dateFormat: "dd-mm-yy"
+     });
+});
+
+$(function() {
+    $('#product_context_end_time').datetimepicker({
+    	duration: '',
+        showTime: true,
+       constrainInput: false,
+         dateFormat: "dd-mm-yy"
+     });
+});
+$(function() {
+    $("select").change(function() {
+        var selectValue = $("#product_context_context_type").val();
+
+        if (selectValue == "Time") {
+            //$(".extra_field_input").show();
+            $(".extra").show();
+        } else {
+            //$(".extra_field_input").hide();
+            $(".extra").hide();
+        };
+    });
+
+});
+function test(){
+    if(($("#product_context_start_time").val()=="" || $("#product_context_end_time").val()=="") && $("#product_context_context_type").val()=="Time" ) {
+        alert('Time fields should not be blank');
+        return false;
+    }
+}
 
 $(function() {
 	jQuery('#invoice_created_at').datetimepicker({
