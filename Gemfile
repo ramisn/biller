@@ -27,7 +27,7 @@ gem 'haml-rails', :group => :development
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+#gem 'pg'
 gem 'therubyracer'
 
 # Gems used only for assets and not required

@@ -1,4 +1,5 @@
-= link_to "Add product", new_product_path, :class => "btn primary float-right"
+#add_product
+  = link_to "Add product", "#", :id => "add_product",:class => "btn primary float-right"
 %h1 Products
 %form.search{:action => products_path, :method => "get"}
   %input{:name => "q", :type => "serach", :value => params[:q]}/
@@ -11,4 +12,29 @@
       %th.blue.header= sortable_header "Unit Price", :unit_price
   %tbody
     = render @products
+
 = paginate @products
+
+= form_tag('', class: 'new-product', style: 'display: none') do
+  %span Name
+  %input{type: 'text', name: 'product[name]'}
+  %span Unit Price
+  %input{type: 'text', name: 'product[unit_price]'}
+  %span Key
+  %input{type: 'text', name: 'product[key]'}
+  %span Description
+  %input{type: 'text', name: 'product[description]'}
+  %span
+  %input{type: 'submit', :class=>"btn" }
+
+
+%script{ id: "product", type: "text/html"}
+  %tr
+    %td 
+      %a{:href => "http://localhost:3000/products/{{id}}"} {{name}}
+    %td {{unit_price}}
+    %td 
+      %a{:href => "http://localhost:3000/products/{{id}}/product_contexts/new", :class => "btn"} Add context
+
+#error-valid
+  

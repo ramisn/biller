@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
           flash[:success] = "Product was created successfully"
           redirect_to product_path(@product)
         }
-        format.json  { render :json => @product, :status => :success }
+        format.json  { render :json => @product, :status => 200}
       else
         format.html  { render :action => :new }
         format.json  { render :json => @product.errors, :status => :unprocessable_entity }

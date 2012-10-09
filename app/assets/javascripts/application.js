@@ -9,6 +9,14 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require_tree .
+//= require products
+//= require mustache
+//= require ICanHaz
+
+
+// for getting the product id from the find function
+var product_id;
+
 
 //script for the product context
 $(function() {
@@ -116,7 +124,8 @@ function addRow(tbl,row){
 
   
  var textbox ='<input type="text" style="width:100px" class="autocomplete_field" def_ref='+row_no+'  name="pn[]" id=pn'+tick+'>';
- var textbox2 = '<input type="text" style="width:100px" name="qty[]" onblur="calculate('+tick+');"  value="1" id=qty'+tick+'>';
+  var textbtn = '<input type="radio" name="type_sel'+tick+'" onclick="searching_by_date('+row_no+')" def_ref='+row_no+' id =date_'+tick+' value="1">'+'Now'+'<input type="radio" name="type_sel'+tick+'" onclick="searching_by_time('+row_no+')" def_ref='+row_no+' value="0" id =time_select'+tick+' ">'+'Time';
+ var textbox2 = '<input type="text" style="width:50px" name="qty[]" onblur="calculate('+tick+');"  value="1" id=qty'+tick+'>';
  var textbox3 = '<input type="text" style="width:100px"  name="up[]" onblur="calculate('+tick+')"   value="0.0" id=up'+tick+'>';
  var textbox4 = '<input type="text" style="width:100px" readonly ="true"  name="total[]" value="0.0" id=total'+tick+'>';
 
@@ -131,14 +140,17 @@ function addRow(tbl,row){
    var newCell = newRow.insertCell(0);
    newCell.innerHTML = textbox;
    var newCell = newRow.insertCell(1);
-   newCell.innerHTML = textbox2;
+   newCell.innerHTML = textbtn;
    var newCell = newRow.insertCell(2);
-   newCell.innerHTML = textbox3;
+   newCell.innerHTML = textbox2;
    var newCell = newRow.insertCell(3);
-   newCell.innerHTML = textbox4;
+   newCell.innerHTML = textbox3;
    var newCell = newRow.insertCell(4);
+   newCell.innerHTML = textbox4;   
+   var newCell = newRow.insertCell(5);
    newCell.innerHTML = stop;
    }
+   searching_by_time(row_no)
  }
 //Delete Function
  function deleteRow(r)
@@ -148,6 +160,7 @@ function addRow(tbl,row){
          var i=r.parentNode.parentNode.rowIndex;
          document.getElementById('TableMain').deleteRow(i);
         //calculate_delete(r);
+         row_no-=1
          calculate_total();
      }
      else
@@ -166,8 +179,8 @@ function searching(val){
    function(data) {
   //var returndata = data;
    $('#displayed').html(data);
-      // alert(data);
-     //alert($('#values1').val());
+    // alert(data);
+    //alert($('#values1').val());
     //var name= $('#values1').text();
     //var unitprice=$('#values2').text();
     //document.getElementById('name').value=name;
@@ -261,11 +274,59 @@ $(document).ready(function() {
                   $("#pn"+$(this).attr('def_ref')).val(data[0]);
                   $("#up"+$(this).attr('def_ref')).val(data[1]);
                   $("#qty"+$(this).attr('def_ref')).val(1);
+                 
+                   product_id = data[2];
                    calculate($(this).attr('def_ref'));
 
                 });
 
 	});
 });
+
+
+
+//function for picking the unit price based on product context time
+
+
+  function searching_by_time(v)
+  {
+ 
+   $('#time_select'+v).datetimepicker({
+    	duration: '',
+      showTime: true,
+      constrainInput: false,
+      dateFormat: "dd-mm-yy"
+     });
+   
+   $(".ui-datepicker-close").click(function(){
+    
+     time_val=$('#time_select'+v).val();
+     
+     if (time_val !=0) {
+      $.get("find_context", { value: time_val, id: product_id },
+      function(data) {
+      //alert("hii");
+        $("#up"+v).val(data);
+        alert(data);
+      });  
+        
+      }
+      else{
+      alert("select the date and time");
+      }
+     
+   }); 
+  }
+
+function searching_by_date( v)
+  {
+   //alert(product_id);
+    $.get("find_context", { id: product_id },
+      function(data) {
+     $("#up"+v).val(data);
+        alert(data);
+      });  
+     
+  }
 
 

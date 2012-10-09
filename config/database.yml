@@ -5,9 +5,9 @@
 #   gem 'sqlite3'
 development:
   adapter: mysql
-  database: biller_dev2
+  database: biller_dev
   username: root
-  password: root
+  password: 
   pool: 5
   timeout: 5000
 
@@ -22,8 +22,8 @@ test:
 
 production:
   adapter: mysql
-  database: biller_dev2
+  database: biller_dev
   username: root
-  password: root
+  password: 
   pool: 5
   timeout: 5000

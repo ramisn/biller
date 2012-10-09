@@ -9,6 +9,7 @@ BillerBot::Application.routes.draw do
 
   match '/payments/receipt', :to => 'payments#receipt', :as => 'payments_receipt', :via => [:get]
 
+
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users
   resources :products do
@@ -24,7 +25,11 @@ BillerBot::Application.routes.draw do
     end
     collection do 
     get "find"
+    
    end 
+   collection do
+   get "find_context"
+   end
    collection do 
     get "test"
    end

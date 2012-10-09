@@ -3988,3 +3988,9 @@ a.thumbnail:hover {
 .invisible {
   visibility: hidden;
 }
+.new-product input{
+    width: 135px;
+};
+.new-product{
+  margin: 0 0 -10px;
+}

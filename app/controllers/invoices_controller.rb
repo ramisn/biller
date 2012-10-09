@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
    respond_to :html, :js
-load_and_authorize_resource
+  load_and_authorize_resource
   add_breadcrumb "Invoices", :invoices_path
   
   def index
@@ -108,10 +108,11 @@ load_and_authorize_resource
   def destroy
     
   end
+  
   def find
    like= params[:data][:autocomplete]["keyword"]
    like=like.concat("%")
-   @found=Product.where("products.key like ?",like)
+   @found=Product.where( "products.organization_id = ? AND products.key like ?" ,current_user.organization_id,like )
    render :layout => false
 
   end
@@ -135,4 +136,43 @@ session["line_item"][n]=@line_item.id
 
   end
 
+  def find_context
+  
+    #raise params.inspect
+    @product=Product.find(params[:id])
+    if params[:value]== nil
+      @current_time=Time.now 
+      else
+      @current_time= DateTime.parse(params[:value])
+    end 
+    @arr1=Array.new
+    @arr=Array.new
+    j=0
+    @productcontext= @product.product_contexts
+    #raise @productcontext.inspect
+    if @productcontext!=nil
+      @productcontext.each do |i|
+        if i.start_time != nil
+          if @current_time >= i.start_time
+            if @current_time<=i.end_time  
+              @arr[j]=i.context_priority
+              @arr1[j]=i.id
+              j=j+1
+            end
+          end   
+        end
+      end   
+      n=@arr.find_index @arr.min
+      if n!=nil
+        id=@arr1[n]
+        @price=ProductContext.find(id).unit_price
+        else
+        @price=@product.unit_price
+      end
+    else
+      @price=@product.unit_price
+    end
+    render :layout => false
+  #raise n.inspect
+end
 end
