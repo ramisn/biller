@@ -1,14 +1,15 @@
 = semantic_form_for @invoice do |f|
   = f.inputs do
-    = f.label "Account"
-    #account_select
-      = render :partial => "account_select", :locals => { :f => f }
-    = f.input :created_at ,{:as=>:string, :class =>"created_at" }
-    = f.input :statuses ,:label=>"Status",:collection => ["Received", "Pending", "Due","Processing","Returned","Approved" ]
-    = f.input :tax,:label=>'Tax in %',:hint=>" for example - 4.5"
-  %h5{:align => "right"}
-    = f.commit_button  :button_html => { :class=>"primary" ,:value=>"Save Invoice"}
-    %br/
+    .create_bt
+      = f.label "Account"
+      #account_select
+        = render :partial => "account_select", :locals => { :f => f }
+      = f.input :created_at ,{:as=>:string, :class =>"created_at" }
+      = f.input :statuses ,:label=>"Status",:collection => ["Received", "Pending", "Due","Processing","Returned","Approved" ]
+      = f.input :tax,:label=>'Tax in %',:hint=>" for example - 4.5"
+    %h5{:align => "right"}
+      = f.commit_button  :button_html => { :class=>"btn btn-primary btn-sub" ,:value=>"Save Invoice"}
+      %br/
   / table just for layout sake
   / <table >
   / <tr>
@@ -34,7 +35,7 @@
     %td{:valign => "top", :width => "20%"}
   / Add more button
   \  
-  %input#addlineitem{:onClick => "addRow('TableMain','row1')", :type => "button", :value => "Add Line Item"}/
+  %input#addlineitem{:onClick => "addRow('TableMain','row1')", :type => "button", :value => "Add Line Item",  :class => "btn btn-primary" }/
   %br/
   %br/
   Add Product Key

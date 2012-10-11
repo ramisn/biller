@@ -15,10 +15,12 @@
         End Time: 
         =f.text_field :end_time, {:readonly=>"true"}
     %br/
+  .in_fld
     = f.input :unit_price
     = f.input :context_priority
-  = f.buttons do
-    - link_to "Cancel", :back, :class => "float-right"
-    = f.commit_button  :button_html => {:class=>"primary",:onclick=>"return test();"}
-    
+  .form-actions
+    = f.buttons do
+      - link_to "Cancel", :back, :class => "float-right"
+      = f.commit_button  :button_html => {:class=>"btn btn-primary primary_crt",:onclick=>"return test();"}
+      
 

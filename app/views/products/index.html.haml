@@ -1,11 +1,11 @@
 #add_product
-  = link_to "Add product", "#", :id => "add_product",:class => "btn primary float-right"
+  %input{type: "button", :class => "btn btn-primary btn-sub",:value => "Add Product"}
 %h1 Products
 %form.search{:action => products_path, :method => "get"}
   %input{:name => "q", :type => "serach", :value => params[:q]}/
-  %input.btn{:type => "submit"}/
+  %input.btn{:type => "submit", :class => "btn btn-primary"}/
 = raw page_entries_info @products
-%table.zebra-striped
+%table{ :class => "zebra-striped table table-striped"}
   %thead
     %tr
       %th.header.blue= sortable_header "Name", :name
@@ -25,7 +25,7 @@
   %span Description
   %input{type: 'text', name: 'product[description]'}
   %span
-  %input{type: 'submit', :class=>"btn" }
+  %input{type: 'submit', :class=>"btn btn-primary btn-sub" }
 
 
 %script{ id: "product", type: "text/html"}

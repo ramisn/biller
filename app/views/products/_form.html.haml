@@ -1,8 +1,12 @@
 = semantic_form_for @product do |f|
   = f.inputs do
-    = f.input :name
-    = f.input :unit_price
-    = f.input :key
-    = f.input :description, :input_html => { :rows => 5, :cols => 8 }
-  = f.buttons do
-    = f.commit_button  :button_html => { :class=>"primary" }
+    .in_fld
+      = f.input :name
+    .product_price
+      = f.input :unit_price
+    .in_fld
+      = f.input :key
+      = f.input :description, :input_html => { :rows => 5, :cols => 8 }
+  .form-actions{class: "inpt_bt"}
+    = f.buttons do
+      = f.commit_button  :button_html => { :class=>"btn btn-primary primary_crt" }

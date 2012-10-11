@@ -53,23 +53,17 @@
 .secondary-nav {
 float:right !important;
 }
-/*#delete{*/
-    /*color:#ffffff;*/
-    /*background-color: #006DCC;*/
-    /*background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);*/
-    /*background-repeat: repeat-x;*/
-    /*border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);}}*/
-    
 .formtastic textarea {
   width: 200px;
 } 
 
+
 .formtastic .stringish input[size] {  
-    max-width: 30% !important;
+    max-width: 30%;
     width: auto;
 }
  td, th {
-  padding-right:100px;
+  padding-right: 55px;
   margin: 10px; 
 }
 

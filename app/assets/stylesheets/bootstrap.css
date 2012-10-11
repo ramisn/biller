@@ -621,7 +621,7 @@ select,
   width: 210px;
   height: 18px;
   padding: 4px;
-  margin-bottom: 9px;
+  margin-bottom: 0px;
   font-size: 13px;
   line-height: 18px;
   color: #555555;
@@ -629,6 +629,10 @@ select,
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+.search input
+{
+  margin-bottom: 0px;
 }
 .uneditable-textarea {
   width: auto;
@@ -2997,10 +3001,11 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > li {
   display: block;
   float: left;
+  padding: 10px 0 0 0;
 }
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 10px 11px;
+  padding: 0px 10px 11px;
   line-height: 19px;
   color: #999999;
   text-decoration: none;
@@ -3993,4 +3998,89 @@ a.thumbnail:hover {
 };
 .new-product{
   margin: 0 0 -10px;
+}
+.btn-sub{
+  float: right;
+}
+.secondary-nav li a
+{
+  margin-left: 5px;
+}
+.login_frm label
+{
+  width: 110px;
+  float: left;
+}
+.in_fld .input input,.in_fld .input
+{
+  width: 270px !important;
+  padding:5px;
+  float: left;
+}
+.in_fld label
+{
+  width:100px !important;
+  float: left;
+}
+.formtastic .stringish .in_fld .input input
+{
+  max-width: 300px;
+}
+#new_user
+{
+  margin-top: 20px;
+}
+.primary_crt
+{
+  padding: 5px !important;
+  
+}
+.clearfix .btn-primary{
+  margin-left: 110px;
+}
+.alert-message{
+  width: 920px;
+  margin-bottom: 20px;
+}
+.prod_content{
+  padding-top: 15px;
+}
+.navigate_btn
+{
+  margin-right: 20px;
+}
+.zebra-striped
+{
+  margin-top: 20px;
+}
+p.success_flash
+{
+  line-height: 0;
+  padding: 15px 0 9px 0;
+  text-align: left;
+}
+.product_price label,.create_bt label
+{
+  float: left;
+  min-width: 100px;
+}
+.product_price .input,.create_bt .input
+{
+  max-width: 300px;
+  float: left;
+}
+.product_price .input input,.create_bt .input input
+{
+  width: 195px !important;
+  padding: 5px;
+  max-width: 100% !important;
+}
+
+.inpt_bt .actions
+{
+  padding-left: 22% !important;
+}
+.create_bt .input
+{
+   max-width: 300px;
 }

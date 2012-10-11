@@ -29,9 +29,10 @@
       #breadcrumbs
         = render_breadcrumbs
       - flash.each do |type, message|
-        %div{:class => "alert-message #{type}"}
+        %div{:class => "alert-message btn btn-success #{type}"}
           %a.close.close_notice{:href => "#"} x
-          %p= message
+          %p.success_flash
+            = message
       #content
         = yield
     = javascript_include_tag "jquery.autocomplete","jquery-ui-timepicker-addon"             

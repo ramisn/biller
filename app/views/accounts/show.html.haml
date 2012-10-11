@@ -1,11 +1,11 @@
-= link_to "Show All Invoices ", invoices_path(@account),:class=>"btn primary float-right"
-= link_to "Edit Account", edit_account_path(@account), :class =>"btn primary float-right"
+= link_to "Show All Invoices ", invoices_path(@account),:class=>"btn btn-primary btn-sub"
+= link_to "Edit Account", edit_account_path(@account), :class =>"btn btn-primary btn-sub navigate_btn"
 %tr
   %h1= @account.display_name
   %ul
     %li= link_to @account.email, "mailto:#{@account.email}"
     %li= @account.phone
-  = link_to "Add Contact", new_account_contact_path(@account), :class => [:btn, :primary, "float-right"]
+  = link_to "Add Contact", new_account_contact_path(@account), :class => "btn btn-primary btn-sub"
   %h2 Account Contacts
   / <p>TODO: Show a list of contacts here</p>
   %table.zebra-striped

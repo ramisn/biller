@@ -6,8 +6,8 @@
     %th Starting Time
     %th Ending Time
     %th Context Priority
-    %th         Edit
-    %th              Destroy
+    %th Edit
+    %th Destroy
   %tr
     %td
       = @products_contexts.product.name
@@ -28,6 +28,6 @@
     %td
       = @products_contexts.context_priority
     %td
-      = link_to "Edit", edit_product_product_context_path(@product),:class => "btn primary float-right"
+      = link_to "Edit", edit_product_product_context_path(@product),:class => "btn btn-primary"
     %td
-      = link_to "Destroy context",product_product_context_path(@products_contexts.product_id,@products_contexts), :method => :delete,:class => "btn primary float-right"
+      = link_to "Destroy context",product_product_context_path(@products_contexts.product_id,@products_contexts), :method => :delete,:class => "btn btn-danger"
