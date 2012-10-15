@@ -36,6 +36,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       if @account.save
       	@success = true
+        
       	if params[:call_from]
 		    	 format.html {
 						    flash[:success] = "Account was added successfully"
