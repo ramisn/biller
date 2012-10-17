@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120116165704) do
+ActiveRecord::Schema.define(:version => 20120317151420) do
+
+  create_table "account_contacts", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "account_product_contexts", :force => true do |t|
     t.integer  "account_id"
@@ -27,7 +37,19 @@ ActiveRecord::Schema.define(:version => 20120116165704) do
     t.string   "display_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "phone"
   end
+
+  create_table "holidays", :force => true do |t|
+    t.string   "holiday_for"
+    t.datetime "holiday_date"
+    t.integer  "users_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "holidays", ["users_id"], :name => "index_holidays_on_users_id"
 
   create_table "invoice_line_items", :force => true do |t|
     t.integer  "invoice_id"
@@ -58,6 +80,9 @@ ActiveRecord::Schema.define(:version => 20120116165704) do
     t.integer  "invoice_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "statuses"
+    t.string   "tax"
+    t.string   "total_amount"
   end
 
   create_table "line_items", :force => true do |t|
@@ -77,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20120116165704) do
 
   create_table "product_contexts", :force => true do |t|
     t.integer  "product_id"
-    t.string   "type"
+    t.string   "product_type"
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
@@ -85,6 +110,10 @@ ActiveRecord::Schema.define(:version => 20120116165704) do
     t.text     "parameters"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "context_priority"
+    t.string   "context_type"
   end
 
   create_table "products", :force => true do |t|
@@ -93,6 +122,9 @@ ActiveRecord::Schema.define(:version => 20120116165704) do
     t.float    "unit_price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "key",             :default => "", :null => false
+    t.string   "description"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

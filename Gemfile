@@ -15,7 +15,7 @@ gem "breadcrumbs_on_rails"
 gem 'bootstrap-sass'
 gem "awesome_nested_set"
 gem "kaminari"
-gem "mysql"
+gem "mysql2"
 gem "cocoon"
 gem "haml"
 gem "rake"
@@ -23,6 +23,8 @@ gem "activemerchant"
 gem 'less-rails-bootstrap'
 gem 'tabulous'
 gem 'haml-rails', :group => :development
+# gem "activerecord-import", ">= 0.2.0"
+
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

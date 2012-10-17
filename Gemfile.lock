@@ -113,7 +113,7 @@ GEM
     money (3.7.1)
       i18n (~> 0.4)
     multi_json (1.1.0)
-    mysql (2.8.1)
+    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -205,7 +205,7 @@ DEPENDENCIES
   json
   kaminari
   less-rails-bootstrap
-  mysql
+  mysql2
   rails (= 3.1.4)
   rake
   sass-rails (~> 3.1.5)

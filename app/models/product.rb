@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+ 
   belongs_to :organization
   has_many :product_contexts
   

@@ -1,5 +1,7 @@
 %tr
   %td
+    = check_box_tag "product_ids[]", product.id, false, class: 'checked_list'
+  %td
     = link_to product.name , product
   %td
     $#{product.unit_price}

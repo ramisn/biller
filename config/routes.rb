@@ -14,6 +14,9 @@ BillerBot::Application.routes.draw do
   resources :users
   resources :products do
     resources :product_contexts
+    collection do
+      put "apply_price"
+    end
   end 
  resources  :invoices do 
   get "find" 

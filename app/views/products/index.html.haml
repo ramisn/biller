@@ -8,22 +8,27 @@
 %table{ :class => "zebra-striped table table-striped"}
   %thead
     %tr
+      %th.header.blue
       %th.header.blue= sortable_header "Name", :name
       %th.blue.header= sortable_header "Unit Price", :unit_price
   %tbody
-    = render @products
+    = form_tag apply_price_products_path, :method => :put do   
+      = render @products
+      .price_form  
+        %input{type: 'text', name: 'prod'}
+        = submit_tag "Apply Percentage", :class => "btn btn-primary"
 
 = paginate @products
 
 = form_tag('', class: 'new-product', style: 'display: none') do
   %span Name
-  %input{type: 'text', name: 'product[name]'}
+  %input{type: 'text', name: 'product[name]', class: 'clearme'}
   %span Unit Price
-  %input{type: 'text', name: 'product[unit_price]'}
+  %input{type: 'text', name: 'product[unit_price]', class: 'clearme'}
   %span Key
-  %input{type: 'text', name: 'product[key]'}
+  %input{type: 'text', name: 'product[key]', class: 'clearme'}
   %span Description
-  %input{type: 'text', name: 'product[description]'}
+  %input{type: 'text', name: 'product[description]', class: 'clearme'}
   %span
   %input{type: 'submit', :class=>"btn btn-primary btn-sub" }
 

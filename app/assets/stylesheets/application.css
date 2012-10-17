@@ -6,7 +6,11 @@
  *= require formtastic
  *= require formtastic-bootstrap
  *= require_tree . 
-*/
+/*
+ *= require bootstrap_and_overrides
+ */
+
+/* Your stylesheets goes here... */
 .left{
     float: left;
 

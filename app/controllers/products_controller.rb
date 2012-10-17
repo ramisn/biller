@@ -67,4 +67,18 @@ class ProductsController < ApplicationController
       format.json  { render :json => @product }
     end
   end
+
+  def apply_price
+    percent =  params[:prod].to_f
+    products = Product.find(params[:product_ids])
+    products.each do |product|
+      p = Product.find_by_id(product.id)
+      new_unit_price = product.unit_price-(product.unit_price*(percent/100))
+      p.update_attributes(:unit_price => new_unit_price)
+    end
+    flash[:success] = "Unit Price was applied successfully"
+     redirect_to products_path
+
+  end
+
 end
