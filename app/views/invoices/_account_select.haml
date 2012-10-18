@@ -1,3 +1,4 @@
 = select_tag 'account_id', options_from_collection_for_select(@account_current_user, 'id', 'display_name', @account.id)
-= link_to "Add New Account", "#", :class => "lazy_model", :def_ref => "add_account"	
+=# link_to "Add New Account", "javascript:invoive_acc();", :id => "lazy_model", :class => "lazy_model", :def_ref => "add_account"	
+= link_to "Add New Account", "#", :id => "lazy_model", :class => "lazy_model" #, :def_ref => "add_account"	
 %br

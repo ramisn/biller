@@ -38,7 +38,7 @@
 						- @tax=@invoice.tax.to_f
 						= @total=@a.to_f*@b.to_f
 						
-			%tr
+			%tr.total_in
 				%th.blue.header Total Amount (with #{@invoice.tax}% tax)
 				%th
 				%th
@@ -46,7 +46,7 @@
 					= @invoice.total_amount.to_f * (1 + @invoice.tax.to_f / 100)
 	- if !@print
 		.button
-			= link_to "Print Invoice", invoice_path(:print => true)
+			= link_to "Print Invoice", invoice_path(:print => true), :class => "print_invoice"
 		- else
 		=javascript_tag "window.print()"
 		=javascript_tag "history.go(-1)"

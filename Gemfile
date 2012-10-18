@@ -23,8 +23,6 @@ gem "activemerchant"
 gem 'less-rails-bootstrap'
 gem 'tabulous'
 gem 'haml-rails', :group => :development
-# gem "activerecord-import", ">= 0.2.0"
-
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

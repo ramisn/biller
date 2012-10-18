@@ -1,8 +1,9 @@
-= link_to "Add Account", "#",:class=>"left_a lazy_model", :def_ref => "add_account"
 = semantic_form_for @invoice do |f|
   = f.inputs do
     = f.label "Account"
     = f.select 'account_id', options_from_collection_for_select(@account_current_user, 'id', 'display_name', @invoice.account_id)
+    = link_to "Add Account", "#",:class=>"left_a lazy_model" , :id => "lazy_model"
+    #success
     = f.input :created_at ,{:as=>:string, :class =>"created_at" }
     //= f.collection_select(:organization_id,:statuses,Invoice.all,:statuses,:created_at)
     = f.input :statuses ,:label=>"Status",:collection => ["Received", "Pending", "Due","Processing","Returned","Approved" ]
@@ -64,5 +65,20 @@
 :javascript
   update_row_number(parseInt($("#number_of_row").val()));
 
+
+
+#dialog
+  #error-valid
+  = form_tag( '', :id => 'add_acc') do
+    %span Display Name
+    %input{ type: "text", :name =>"account[display_name]", class: 'clearme'}
+    %span Email
+    %input{type: "text", :name => "account[email]", class: 'clearme'}
+    %span Phone
+    %input{ type: "text", :name => "account[phone]", class: 'clearme'}
+    %input{type: 'submit', :value => 'Create Account', :id => 'create_acc', :class=>"btn btn-primary btn-sub" }
+  #close_dialog 
+    %input{type: 'button', :value => "Close", :class=>"btn btn-primary"}
+  
 
 

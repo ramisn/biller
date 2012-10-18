@@ -12,6 +12,8 @@
 //= require products
 //= require mustache
 //= require ICanHaz
+//= require jquery.form
+//= require add_new_account
 
 
 // for getting the product id from the find function
@@ -21,21 +23,21 @@ var product_id;
 //script for the product context
 $(function() {
     $('#product_context_start_time').datetimepicker({
-    	duration: '',
+      duration: '',
       showTime: true,
       constrainInput: false,
       dateFormat: "dd-mm-yy"
      });
      
     $('#product_context_end_time').datetimepicker({
-    	duration: '',
+      duration: '',
       showTime: true,
       constrainInput: false,
       dateFormat: "dd-mm-yy"
      });
      
     $('#holiday_holiday_date').datetimepicker({
-    	duration: '',
+      duration: '',
       showTime: true,
       constrainInput: false,
       dateFormat: "dd-mm-yy"
@@ -62,27 +64,6 @@ function test(){
     }
 }
 
-$(function() {
-	jQuery('#invoice_created_at').datetimepicker({
-		duration: '',
-		dateFormat: 'dd-mm-yy',
-		showTime: true
-	});
-	var wWidth = $(window).width();
-	$(".lazy_model").click(function(){
-		$("#"+ $(this).attr("def_ref")).dialog({
-      modal: true,
-      width: wWidth*0.4,
-      autoResize:true
-			});
-		alert("#"+ $(this).attr("def_ref"));	
-	});
-
-	$(".close_notice").click(function(){
-	
-		$(".alert-message").hide();
-	});
-});
 //update invoice
 function update_row_number(i)
   {
@@ -172,10 +153,10 @@ function addRow(tbl,row){
 
 
 function searching(val){
-	var getval=document.getElementById("keywords").value;
-	
-	
-		$.get("find", { value: getval, name: "fstech" },
+  var getval=document.getElementById("keywords").value;
+  
+  
+    $.get("find", { value: getval, name: "fstech" },
    function(data) {
   //var returndata = data;
    $('#displayed').html(data);
@@ -230,7 +211,7 @@ $(document).ready(function() {
                 });
 
 //
-//	$("#keywords1").autocomplete("find",
+//  $("#keywords1").autocomplete("find",
 //        { minChars:2, matchSubset:1, matchContains:1, cacheLength:10,
 //        onItemSelect:selectItem, formatItem:formatItem, selectOnly:1
 //        });
@@ -280,7 +261,7 @@ $(document).ready(function() {
 
                 });
 
-	});
+  });
 });
 
 
@@ -292,7 +273,7 @@ $(document).ready(function() {
   {
  
    $('#time_select'+v).datetimepicker({
-    	duration: '',
+      duration: '',
       showTime: true,
       constrainInput: false,
       dateFormat: "dd-mm-yy"
@@ -328,5 +309,4 @@ function searching_by_date( v)
       });  
      
   }
-
 

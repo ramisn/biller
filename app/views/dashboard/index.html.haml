@@ -3,4 +3,18 @@
 %h1 My Dashboard
 %p We will show some graphs here...  TBD
 %p
-  
+%br
+
+/ - @invoices.each do |invoice|
+/   - if invoice.any?
+/     - invoice.each do |inv|
+/       %tr
+/         %th Invoice id
+/         %th Status
+/         %th Total Amount
+/         %br
+/         %td= inv.id
+/         %td= inv.statuses
+/         %td= inv.total_amount
+/         %br
+			
